@@ -1,0 +1,344 @@
+{
+  "countries": [
+    {
+      "name": "Itália",
+      "cities": [
+        {
+          "name": "Roma",
+          "activities": [
+            {
+              "name": "Coliseu",
+              "image": "/home/ubuntu/upload/search_images/YHPx5942gxhq.jpg",
+              "narration_audio": "",
+              "map_coordinates": {"latitude": "41.8902", "longitude": "12.4922"},
+              "suggested_time": "2-3 horas",
+              "description": "O Coliseu, originalmente conhecido como Anfiteatro Flaviano, é o maior anfiteatro já construído e um dos monumentos mais famosos de Roma. Era usado para combates de gladiadores e espetáculos públicos. Sua construção foi iniciada em 72 d.C. pelo imperador Vespasiano e concluída em 80 d.C. por seu filho Tito.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Fórum Romano",
+              "image": "/home/ubuntu/upload/search_images/tQR0Eupp1WAo.jpg",
+              "narration_audio": "",
+              "map_coordinates": {"latitude": "41.8918", "longitude": "12.4852"},
+              "suggested_time": "2-3 horas",
+              "description": "O Fórum Romano foi o centro da vida pública, religiosa e comercial da Roma Antiga. Localizado entre o Coliseu e o Monte Palatino, era o coração da cidade, onde se realizavam discursos, julgamentos e transações comerciais. Suas ruínas contam a história de séculos de civilização romana.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Monte Palatino",
+              "image": "/home/ubuntu/upload/search_images/tC6i15eNlEPz.jpg",
+              "narration_audio": "",
+              "map_coordinates": {"latitude": "41.8893", "longitude": "12.4856"},
+              "suggested_time": "1-2 horas",
+              "description": "O Monte Palatino é uma das sete colinas de Roma e é considerado o local de fundação da cidade. Foi o lar de imperadores e aristocratas romanos, e suas ruínas oferecem uma vista deslumbrante do Fórum Romano e do Circo Máximo. É um dos sítios arqueológicos mais antigos de Roma.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Panteão",
+              "image": "/home/ubuntu/upload/search_images/LtAVZjQb8cJO.jpg",
+              "narration_audio": "",
+              "map_coordinates": {"latitude": "41.8986", "longitude": "12.4768"},
+              "suggested_time": "1-2 horas",
+              "description": "O Panteão de Roma é um dos monumentos mais bem preservados da Roma Antiga. Originalmente um templo dedicado a todos os deuses romanos, foi posteriormente convertido em uma igreja. Sua cúpula impressionante e o óculo central são maravilhas arquitetônicas. É um local de grande importância histórica e artística.",
+              "is_favorite": false,
+              "visited": false
+            }
+            ,
+            {"name": "Circo Máximo", "image": "", "narration_audio": "", "suggested_time": "30-60 min", "description": "Antigo estádio romano para corridas de bigas entre o Monte Palatino e o Aventino."},
+            {"name": "Catacumbas de Roma", "image": "", "narration_audio": "", "suggested_time": "1-2 horas", "description": "Complexo de túneis subterrâneos usados como necrópoles e locais de culto cristão."},
+            {"name": "Castel Sant’Angelo", "image": "", "narration_audio": "", "suggested_time": "1-2 horas", "description": "Mausoléu de Adriano convertido em fortaleza e museu às margens do Tibre."},
+            {"name": "Piazza Navona", "image": "", "narration_audio": "", "suggested_time": "30-60 min", "description": "Praça barroca famosa pelas fontes de Bernini e pela igreja de Borromini."},
+            {"name": "Termas de Caracalla", "image": "", "narration_audio": "", "suggested_time": "1-2 horas", "description": "Ruínas das grandiosas termas imperiais do século III."},
+            {"name": "Museus Capitolinos", "image": "", "narration_audio": "", "suggested_time": "2-3 horas", "description": "Museus de arte e arqueologia na Colina Capitolina, entre os mais antigos do mundo."},
+            {"name": "Palazzo Barberini", "image": "", "narration_audio": "", "suggested_time": "1-2 horas", "description": "Palácio barroco que abriga a Galleria Nazionale d’Arte Antica."},
+            {"name": "Museus do Vaticano", "image": "", "narration_audio": "", "suggested_time": "3-4 horas", "description": "Acervo vasto com a Capela Sistina e coleções de arte antigas e renascentistas."},
+            {"name": "Fontana di Trevi", "image": "", "narration_audio": "", "suggested_time": "15-30 min", "description": "Maior fonte barroca de Roma, célebre pelo ritual de jogar moedas."},
+            {"name": "Escadaria da Praça de Espanha (Scalinata di Trinità dei Monti)", "image": "", "narration_audio": "", "suggested_time": "15-30 min", "description": "Escadaria monumental ligando a Piazza di Spagna à igreja Trinità dei Monti."},
+            {"name": "Basílica de São Pedro", "image": "", "narration_audio": "", "suggested_time": "2-3 horas", "description": "A maior basílica do cristianismo, com a cúpula de Michelangelo e a Praça de São Pedro."},
+            {"name": "Via Ápia Antiga", "image": "", "narration_audio": "", "suggested_time": "1-2 horas", "description": "Uma das estradas romanas mais antigas, com trechos preservados e monumentos ao longo do caminho."}
+          ]
+        },
+        {
+          "name": "Florença",
+          "activities": [
+            {
+              "name": "Duomo de Florença",
+              "image": "/home/ubuntu/upload/search_images/sb1l81nURtbm.jpg",
+              "narration_audio": "/Audio/FLORENCA_Duomo.mp3",
+              "map_coordinates": {"latitude": "43.7731", "longitude": "11.2558"},
+              "suggested_time": "2-3 horas",
+              "description": "A Catedral de Santa Maria del Fiore, conhecida como Duomo de Florença, é um dos símbolos mais icônicos da cidade. Sua cúpula, projetada por Brunelleschi, é uma obra-prima da engenharia renascentista. O complexo inclui o Batistério e o Campanário de Giotto, oferecendo vistas panorâmicas da cidade.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Galleria degli Uffizi",
+              "image": "/home/ubuntu/upload/search_images/o5rmIcZBXXjO.jpg",
+              "narration_audio": "/Audio/FLORENCA_GaleriDegliUffizi.mp3",
+              "map_coordinates": {"latitude": "43.7684", "longitude": "11.2558"},
+              "suggested_time": "3-4 horas",
+              "description": "A Galleria degli Uffizi é um dos museus de arte mais antigos e famosos do mundo, abrigando uma vasta coleção de obras-primas do Renascimento italiano, incluindo Botticelli, Leonardo da Vinci, Michelangelo e Rafael. É um destino imperdível para amantes da arte.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Ponte Vecchio",
+              "image": "/home/ubuntu/upload/search_images/qK7tn5jgCm2n.jpg",
+              "narration_audio": "/Audio/FLORENCA_Ponte%20Vecchio.mp3",
+              "map_coordinates": {"latitude": "43.7681", "longitude": "11.2531"},
+              "suggested_time": "1 hora",
+              "description": "A Ponte Vecchio é uma ponte medieval sobre o rio Arno, famosa por suas lojas construídas ao longo de suas laterais, que originalmente abrigavam açougues e, hoje, joalherias. É um dos cartões-postais de Florença e um local romântico para passear.",
+              "is_favorite": false,
+              "visited": false
+            }
+            ,
+            {
+              "name": "Palazzo Pitti",
+              "image": "",
+              "narration_audio": "/Audio/FLORENCA_Palazzo%20Pitti.mp3",
+              "map_coordinates": {"latitude": "43.7659", "longitude": "11.2507"},
+              "suggested_time": "1-2 horas",
+              "description": "Palácio renascentista com museus e os Jardins de Boboli, antiga residência dos Medici.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Galleria dell’Accademia",
+              "image": "",
+              "narration_audio": "/Audio/FLORENCA_GalleriaDellAcademia.mp3",
+              "map_coordinates": {"latitude": "43.7769", "longitude": "11.2586"},
+              "suggested_time": "1-2 horas",
+              "description": "Museu que abriga o Davi de Michelangelo e outras obras-primas do Renascimento.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Piazza San Giovanni",
+              "image": "",
+              "narration_audio": "/Audio/FLORENCA_Piazza%20San%20Giovanni.mp3",
+              "map_coordinates": {"latitude": "43.7734", "longitude": "11.2556"},
+              "suggested_time": "30-60 min",
+              "description": "Praça do Batistério de São João, em frente ao Duomo, coração religioso da cidade.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Palazzo Vecchio",
+              "image": "",
+              "narration_audio": "/Audio/FLORENCA_Palazzo%20Vecchio.mp3",
+              "map_coordinates": {"latitude": "43.7696", "longitude": "11.2558"},
+              "suggested_time": "1-2 horas",
+              "description": "Sede histórica do poder civil de Florença, com museu e a icônica torre Arnolfo.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Basílica de San Lorenzo",
+              "image": "",
+              "narration_audio": "/Audio/FLORENCA_Bas%C3%ADlica%20de%20San%20Lorenzo.mp3",
+              "map_coordinates": {"latitude": "43.7741", "longitude": "11.2530"},
+              "suggested_time": "1 hora",
+              "description": "Uma das igrejas mais antigas de Florença, ligada à família Medici e a Brunelleschi.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Basílica di Santa Croce",
+              "image": "/Images/FLORENCA_BasilicaDeSantaCroce.png",
+              "narration_audio": "/Audio/FLORENCA_BasilicaDeSantaCroce.mp3",
+              "map_coordinates": {"latitude": "43.7687", "longitude": "11.2626"},
+              "suggested_time": "1-2 horas",
+              "description": "Basílica franciscana famosa por túmulos de figuras como Michelangelo, Galileo e Machiavelli.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Piazzale Michelangelo",
+              "image": "",
+              "narration_audio": "/Audio/FLORENCA_Piazzale%20Michelangelo.mp3",
+              "map_coordinates": {"latitude": "43.7629", "longitude": "11.2658"},
+              "suggested_time": "30-60 min",
+              "description": "Mirante com a vista panorâmica mais clássica de Florença e do rio Arno.",
+              "is_favorite": false,
+              "visited": false
+            }
+          ]
+        },
+        {
+          "name": "Milão",
+          "activities": [
+            {
+              "name": "Duomo de Milão (Catedral de Milão)",
+              "image": "/home/ubuntu/upload/search_images/ZBFMkeEFmxQY.jpg",
+              "narration_audio": "/Audio/MILAO_Duomo.mp3",
+              "map_coordinates": {"latitude": "45.4642", "longitude": "9.1916"},
+              "suggested_time": "2-3 horas",
+              "description": "A Catedral de Milão, ou Duomo di Milano, é uma das maiores e mais impressionantes catedrais góticas do mundo. Sua arquitetura detalhada, vitrais coloridos e o terraço com vistas panorâmicas da cidade a tornam um marco imperdível em Milão.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Galleria Vittorio Emanuele II",
+              "image": "/home/ubuntu/upload/search_images/MVVmBMFoCUO8.jpg",
+              "narration_audio": "/Audio/MILAO_GalleriaVittorioEmanueleII.mp3",
+              "map_coordinates": {"latitude": "45.4654", "longitude": "9.1918"},
+              "suggested_time": "1-2 horas",
+              "description": "A Galleria Vittorio Emanuele II é uma das galerias comerciais mais antigas e luxuosas do mundo, abrigando lojas de grife, restaurantes e cafés. Com sua arquitetura deslumbrante e teto de vidro, é um ponto de encontro elegante e um ícone da moda milanesa.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Teatro alla Scala",
+              "image": "/home/ubuntu/upload/search_images/tBp44ntrqW3J.jpg",
+              "narration_audio": "/Audio/MILAO_TeatroAllaScala.mp3",
+              "map_coordinates": {"latitude": "45.4682", "longitude": "9.1894"},
+              "suggested_time": "1-2 horas",
+              "description": "O Teatro alla Scala é uma das casas de ópera mais prestigiadas do mundo, com uma rica história e palco para muitas estreias famosas. Mesmo sem assistir a uma apresentação, é possível visitar o museu do teatro para aprender sobre sua história e ver figurinos e instrumentos.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "A Última Ceia",
+              "image": "/Images/MILAO_ultimaceia.png",
+              "narration_audio": "/Audio/MILAO_UltimaCeia.mp3",
+              "map_coordinates": {"latitude": "45.4636", "longitude": "9.1677"},
+              "suggested_time": "1 hora",
+              "description": "A Última Ceia de Leonardo da Vinci é uma das obras de arte mais famosas do mundo, localizada no refeitório do Convento de Santa Maria delle Grazie. A visita requer reserva antecipada devido à sua fragilidade e grande demanda.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Castelo Sforzesco",
+              "image": "/home/ubuntu/upload/search_images/eN55C4aFjcqW.jpg",
+              "narration_audio": "/Audio/MILAO_CastelloSforzesco.mp3",
+              "map_coordinates": {"latitude": "45.4705", "longitude": "9.1799"},
+              "suggested_time": "2-3 horas",
+              "description": "O Castelo Sforzesco é uma fortaleza histórica que abriga vários museus e coleções de arte, incluindo a Pietà Rondanini de Michelangelo. Seus pátios e jardins são ideais para um passeio relaxante, e o castelo é um símbolo da rica história de Milão.",
+              "is_favorite": false,
+              "visited": false
+            }
+          ]
+        },
+        {
+          "name": "Pisa",
+          "activities": [
+            {
+              "name": "Torre de Pisa",
+              "image": "/home/ubuntu/upload/search_images/GSzOFYZNUV9N.jpg",
+              "narration_audio": "/Audio/PISA_TorreDePisa.mp3",
+              "map_coordinates": {"latitude": "43.72295", "longitude": "10.39659"},
+              "suggested_time": "1-2 horas",
+              "description": "A Torre de Pisa é o campanário inclinado da Catedral de Pisa, famosa por sua inclinação acidental. É um dos marcos mais reconhecíveis da Itália e um Patrimônio Mundial da UNESCO. Os visitantes podem subir ao topo para vistas panorâmicas.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Catedral de Pisa (Duomo di Santa Maria Assunta)",
+              "image": "/home/ubuntu/upload/search_images/7ki0suCaMouD.jpg",
+              "narration_audio": "/Audio/PISA_CatedralDePisa.mp3",
+              "map_coordinates": {"latitude": "43.7231", "longitude": "10.3966"},
+              "suggested_time": "1-2 horas",
+              "description": "A Catedral de Pisa é uma obra-prima da arquitetura românica pisana, com sua fachada impressionante e interior ricamente decorado. Faz parte do complexo da Piazza dei Miracoli, juntamente com a Torre Inclinada e o Batistério.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Batistério de Pisa",
+              "image": "/home/ubuntu/upload/search_images/OFnBhuF9bA5f.jpg",
+              "narration_audio": "/Audio/PISA_BatisterioDePisa.mp3",
+              "map_coordinates": {"latitude": "43.7233", "longitude": "10.3964"},
+              "suggested_time": "30 minutos - 1 hora",
+              "description": "O Batistério de Pisa é o maior batistério da Itália, conhecido por sua acústica notável e sua arquitetura gótica e românica. Localizado na Piazza dei Miracoli, complementa a beleza da Catedral e da Torre.",
+              "is_favorite": false,
+              "visited": false
+            }
+          ]
+        },
+        {
+          "name": "San Gimignano",
+          "activities": [
+            {
+              "name": "Torre Grossa",
+              "image": "/home/ubuntu/upload/search_images/ldntSbbF6P8y.jpg",
+              "narration_audio": "/Audio/SANGIMIGNANO_TorreGrossa.mp3",
+              "map_coordinates": {"latitude": "43.4682", "longitude": "11.0428"},
+              "suggested_time": "1 hora",
+              "description": "A Torre Grossa é a torre mais alta de San Gimignano, oferecendo vistas panorâmicas espetaculares da cidade e da paisagem toscana circundante. É um dos símbolos da cidade medieval e um Patrimônio Mundial da UNESCO.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Duomo di San Gimignano (Colegiada de Santa Maria Assunta)",
+              "image": "/home/ubuntu/upload/search_images/ipJXVQSFCOqa.jpg",
+              "narration_audio": "/Audio/SANGIMIGNANO_DuomodeSanGimignano.mp3",
+              "map_coordinates": {"latitude": "43.4683", "longitude": "11.0426"},
+              "suggested_time": "1-2 horas",
+              "description": "O Duomo de San Gimignano, ou Colegiada de Santa Maria Assunta, é uma igreja românica com afrescos impressionantes de artistas como Ghirlandaio. É um tesouro de arte medieval e um local de grande importância religiosa e cultural.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Piazza della Cisterna",
+              "image": "",
+              "narration_audio": "/Audio/SANGIMIGNANO_PiazzadellaCisterna.mp3",
+              "map_coordinates": {"latitude": "43.4679", "longitude": "11.0426"},
+              "suggested_time": "30 minutos - 1 hora",
+              "description": "A Piazza della Cisterna é uma praça triangular pitoresca no coração de San Gimignano, famosa por seu poço medieval e edifícios históricos. É um local vibrante para passear, desfrutar de um gelato e absorver a atmosfera medieval da cidade.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Palazzo Comunale",
+              "image": "/Images/SANGEMINIANO_PalazzoComunale.png",
+              "narration_audio": "/Audio/SANGIMIGNANO_PalazzoComunale.mp3",
+              "map_coordinates": {"latitude": "43.4681", "longitude": "11.0425"},
+              "suggested_time": "1 hora",
+              "description": "O Palazzo Comunale é a sede histórica do governo municipal de San Gimignano, abrigando o Museu Cívico com obras de arte medievais e renascentistas, incluindo afrescos de artistas como Memmo di Filippuccio.",
+              "is_favorite": false,
+              "visited": false
+            }
+          ]
+        },
+        {
+          "name": "Siena",
+          "activities": [
+            {
+              "name": "Piazza del Campo",
+              "image": "/home/ubuntu/upload/search_images/iWPTOfusQCc8.jpg",
+              "narration_audio": "/Audio/SIENA_PiazzadelCampo.mp3",
+              "map_coordinates": {"latitude": "43.3201", "longitude": "11.3315"},
+              "suggested_time": "1-2 horas",
+              "description": "A Piazza del Campo é a principal praça pública do centro histórico de Siena, famosa por sua forma de concha e por ser o local da corrida de cavalos Palio. É um Patrimônio Mundial da UNESCO e um dos espaços medievais mais bonitos da Europa.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Duomo de Siena (Catedral de Siena)",
+              "image": "/home/ubuntu/upload/search_images/CrsxrAJ9iPlu.jpg",
+              "narration_audio": "/Audio/SIENA_DuomodeSiena.mp3",
+              "map_coordinates": {"latitude": "43.3185", "longitude": "11.3299"},
+              "suggested_time": "1-2 horas",
+              "description": "O Duomo de Siena é uma magnífica catedral gótica, conhecida por sua fachada ornamentada, pisos de mármore intrincados, e obras de arte de artistas como Donatello e Michelangelo. É um dos exemplos mais impressionantes da arquitetura gótica italiana.",
+              "is_favorite": false,
+              "visited": false
+            },
+            {
+              "name": "Torre del Mangia",
+              "image": "",
+              "narration_audio": "/Audio/SIENA_TorreDelMangia.mp3",
+              "map_coordinates": {"latitude": "43.3187", "longitude": "11.3316"},
+              "suggested_time": "1 hora",
+              "description": "A Torre del Mangia é a segunda torre medieval mais alta da Itália, oferecendo vistas panorâmicas espetaculares da Piazza del Campo e da cidade de Siena. Subir seus degraus é uma experiência gratificante para apreciar a beleza da Toscana.",
+              "is_favorite": false,
+              "visited": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

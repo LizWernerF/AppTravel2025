@@ -1,0 +1,8 @@
+# MIME types para garantir que o Netlify sirva os arquivos de áudio corretamente
+audio/mpeg mp3
+audio/mp3 mp3
+audio/wav wav
+audio/ogg ogg
+audio/webm webm
+audio/aac aac
+audio/m4a m4a

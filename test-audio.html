@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Áudio - AppTravel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .test-section h3 { margin-top: 0; color: #333; }
+        .audio-test { margin: 10px 0; }
+        .status { padding: 5px 10px; border-radius: 4px; margin: 5px 0; font-size: 12px; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.loading { background: #d1ecf1; color: #0c5460; }
+        .test-button { background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        .test-button:hover { background: #0056b3; }
+        .results { margin-top: 20px; }
+        .audio-file { display: flex; align-items: center; gap: 10px; margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 4px; }
+        .audio-file audio { flex: 1; }
+        .file-info { font-size: 12px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Teste de Áudio - AppTravel</h1>
+        <p>Este script testa se todos os arquivos de áudio estão funcionando corretamente no Netlify.</p>
+        
+        <div class="test-section">
+            <h3>🔧 Testes de Conectividade</h3>
+            <button class="test-button" onclick="testConnectivity()">Testar Conectividade</button>
+            <button class="test-button" onclick="testAllAudio()">Testar Todos os Áudios</button>
+            <button class="test-button" onclick="testMobileCompatibility()">Testar Compatibilidade Mobile</button>
+            <div id="connectivity-results"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📱 Teste de Compatibilidade Mobile</h3>
+            <div id="mobile-info">
+                <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+                <p><strong>É Mobile:</strong> <span id="is-mobile"></span></p>
+                <p><strong>Suporte a MP3:</strong> <span id="mp3-support"></span></p>
+                <p><strong>Suporte a Web Audio:</strong> <span id="web-audio-support"></span></p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎧 Teste Individual de Áudios</h3>
+            <div id="audio-tests">
+                <!-- Os testes de áudio serão inseridos aqui -->
+            </div>
+        </div>
+
+        <div class="results" id="results" style="display: none;">
+            <h3>📊 Resultados dos Testes</h3>
+            <div id="test-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // Lista de arquivos de áudio para testar
+        const audioFiles = [
+            // Roma
+            'ROMA_Coliseu.mp3', 'ROMA_ForumRomano.mp3', 'ROMA_MontePalatino.mp3', 'ROMA_Panteão.mp3',
+            'ROMA_BasilicadeSaoPedro.mp3', 'ROMA_CastelSantAngelo.mp3', 'ROMA_catacumbas.mp3',
+            'ROMA_Circomaximo.mp3', 'ROMA_EscadariadaPraçadeEspanha.mp3', 'ROMA_FontanadiTrevi.mp3',
+            'ROMA_MuseusCapitolinos.mp3', 'ROMA_MuseusdoVaticano.mp3', 'ROMA_PalazzoBarberini.mp3',
+            'ROMA_PiazzaNavona.mp3', 'ROMA_TermasdeCaracalla.mp3', 'ROMA_ViaApia.mp3', 'Roma.mp3',
+            
+            // Florença
+            'FLORENCA_Duomo.mp3', 'FLORENCA_GaleriDegliUffizi.mp3', 'FLORENCA_PonteVecchio.mp3',
+            'FLORENCA_BasilicaDeSanLorenzo.mp3', 'FLORENCA_BasilicaDeSantaCroce.mp3',
+            'FLORENCA_GalleriaDellAcademia.mp3', 'FLORENCA_PalazzoPitti.mp3', 'FLORENCA_PalazzoVecchio.mp3',
+            'FLORENCA_PiazzaSanGiovanni.mp3', 'FLORENCA_PiazzaleMichelangelo.mp3',
+            
+            // Milão
+            'MILAO_Duomo.mp3', 'MILAO_GalleriaVittorioEmanueleII.mp3', 'MILAO_TeatroAllaScala.mp3',
+            'MILAO_UltimaCeia.mp3', 'MILAO_CastelloSforzesco.mp3',
+            
+            // Pisa
+            'PISA_CatedralDePisa.mp3', 'PISA_TorreDePisa.mp3', 'PISA_BatisterioDePisa.mp3',
+            
+            // San Gimignano
+            'SANGIMIGNANO_DuomodeSanGimignano.mp3', 'SANGIMIGNANO_PalazzoComunale.mp3',
+            'SANGIMIGNANO_PiazzadellaCisterna.mp3', 'SANGIMIGNANO_TorreGrossa.mp3',
+            
+            // Siena
+            'SIENA_DuomodeSiena.mp3', 'SIENA_PiazzadelCampo.mp3', 'SIENA_TorreDelMangia.mp3'
+        ];
+
+        let testResults = {
+            total: 0,
+            success: 0,
+            failed: 0,
+            errors: []
+        };
+
+        // Detectar informações do dispositivo
+        function detectDeviceInfo() {
+            const userAgent = navigator.userAgent;
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+            const mp3Support = document.createElement('audio').canPlayType('audio/mpeg') !== '';
+            const webAudioSupport = typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined';
+            
+            document.getElementById('user-agent').textContent = userAgent;
+            document.getElementById('is-mobile').textContent = isMobile ? 'Sim' : 'Não';
+            document.getElementById('mp3-support').textContent = mp3Support ? 'Sim' : 'Não';
+            document.getElementById('web-audio-support').textContent = webAudioSupport ? 'Sim' : 'Não';
+        }
+
+        // Testar conectividade básica
+        async function testConnectivity() {
+            const resultsDiv = document.getElementById('connectivity-results');
+            resultsDiv.innerHTML = '<div class="status loading">Testando conectividade...</div>';
+            
+            try {
+                const response = await fetch('/Audio/ROMA_Coliseu.mp3', { method: 'HEAD' });
+                if (response.ok) {
+                    resultsDiv.innerHTML = '<div class="status success">✅ Conectividade OK - Arquivos de áudio acessíveis</div>';
+                } else {
+                    resultsDiv.innerHTML = `<div class="status error">❌ Erro de conectividade - Status: ${response.status}</div>`;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="status error">❌ Erro de conectividade: ${error.message}</div>`;
+            }
+        }
+
+        // Testar um arquivo de áudio específico
+        async function testAudioFile(fileName) {
+            return new Promise((resolve) => {
+                const audio = new Audio(`/Audio/${fileName}`);
+                const timeout = setTimeout(() => {
+                    resolve({ success: false, error: 'Timeout' });
+                }, 10000);
+                
+                audio.addEventListener('canplaythrough', () => {
+                    clearTimeout(timeout);
+                    resolve({ success: true, duration: audio.duration });
+                });
+                
+                audio.addEventListener('error', (e) => {
+                    clearTimeout(timeout);
+                    resolve({ success: false, error: e.target.error?.message || 'Erro desconhecido' });
+                });
+                
+                audio.load();
+            });
+        }
+
+        // Testar todos os arquivos de áudio
+        async function testAllAudio() {
+            const resultsDiv = document.getElementById('audio-tests');
+            resultsDiv.innerHTML = '<div class="status loading">Testando todos os arquivos de áudio...</div>';
+            
+            testResults = { total: 0, success: 0, failed: 0, errors: [] };
+            
+            for (const fileName of audioFiles) {
+                testResults.total++;
+                const result = await testAudioFile(fileName);
+                
+                const audioDiv = document.createElement('div');
+                audioDiv.className = 'audio-file';
+                
+                if (result.success) {
+                    testResults.success++;
+                    audioDiv.innerHTML = `
+                        <span>✅</span>
+                        <audio controls preload="metadata" src="/Audio/${fileName}"></audio>
+                        <div class="file-info">
+                            <strong>${fileName}</strong><br>
+                            Duração: ${Math.round(result.duration)}s
+                        </div>
+                    `;
+                } else {
+                    testResults.failed++;
+                    testResults.errors.push({ file: fileName, error: result.error });
+                    audioDiv.innerHTML = `
+                        <span>❌</span>
+                        <div class="file-info">
+                            <strong>${fileName}</strong><br>
+                            <span class="status error">Erro: ${result.error}</span>
+                        </div>
+                    `;
+                }
+                
+                resultsDiv.appendChild(audioDiv);
+            }
+            
+            showResults();
+        }
+
+        // Testar compatibilidade mobile
+        function testMobileCompatibility() {
+            const resultsDiv = document.getElementById('connectivity-results');
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            let compatibility = [];
+            
+            // Testar autoplay
+            const audio = new Audio();
+            audio.muted = true;
+            const autoplayPromise = audio.play();
+            autoplayPromise.then(() => {
+                compatibility.push('✅ Autoplay suportado (com muted)');
+            }).catch(() => {
+                compatibility.push('❌ Autoplay não suportado');
+            });
+            
+            // Testar playsInline
+            if ('playsInline' in audio) {
+                compatibility.push('✅ playsInline suportado');
+            } else {
+                compatibility.push('❌ playsInline não suportado');
+            }
+            
+            // Testar preload
+            if ('preload' in audio) {
+                compatibility.push('✅ preload suportado');
+            } else {
+                compatibility.push('❌ preload não suportado');
+            }
+            
+            resultsDiv.innerHTML = `
+                <div class="status ${isMobile ? 'success' : 'loading'}">
+                    ${isMobile ? '📱 Dispositivo Mobile Detectado' : '💻 Dispositivo Desktop'}
+                </div>
+                ${compatibility.map(c => `<div class="status ${c.includes('✅') ? 'success' : 'error'}">${c}</div>`).join('')}
+            `;
+        }
+
+        // Mostrar resultados finais
+        function showResults() {
+            const resultsDiv = document.getElementById('results');
+            const summaryDiv = document.getElementById('test-summary');
+            
+            const successRate = Math.round((testResults.success / testResults.total) * 100);
+            
+            summaryDiv.innerHTML = `
+                <div class="status ${successRate > 90 ? 'success' : successRate > 70 ? 'loading' : 'error'}">
+                    <strong>Taxa de Sucesso: ${successRate}%</strong><br>
+                    ✅ Sucessos: ${testResults.success}<br>
+                    ❌ Falhas: ${testResults.failed}<br>
+                    📊 Total: ${testResults.total}
+                </div>
+                ${testResults.errors.length > 0 ? `
+                    <h4>Erros encontrados:</h4>
+                    ${testResults.errors.map(e => `<div class="status error">${e.file}: ${e.error}</div>`).join('')}
+                ` : ''}
+            `;
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        // Inicializar quando a página carregar
+        window.onload = () => {
+            detectDeviceInfo();
+            testConnectivity();
+        };
+    </script>
+</body>
+</html>

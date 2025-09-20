@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimizador de Imagens - AppTravel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .image-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .image-item { border: 1px solid #ddd; padding: 10px; border-radius: 8px; }
+        .image-item img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; }
+        .image-info { margin-top: 10px; font-size: 12px; color: #666; }
+        .optimize-btn { background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; }
+        .optimize-btn:hover { background: #0056b3; }
+        .progress { width: 100%; height: 20px; background: #f0f0f0; border-radius: 10px; overflow: hidden; margin: 10px 0; }
+        .progress-bar { height: 100%; background: #007bff; transition: width 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Otimizador de Imagens - AppTravel</h1>
+        <p>Este script ajuda a otimizar as imagens do seu projeto para carregar mais rápido.</p>
+        
+        <div id="instructions">
+            <h2>📋 Instruções:</h2>
+            <ol>
+                <li><strong>Redimensione as imagens:</strong> Para mobile, use máximo 800px de largura</li>
+                <li><strong>Comprima as imagens:</strong> Use qualidade 80-85% para JPG</li>
+                <li><strong>Converta para WebP:</strong> Formato mais eficiente (opcional)</li>
+                <li><strong>Use ferramentas online:</strong> TinyPNG, Squoosh.app, ou Photoshop</li>
+            </ol>
+        </div>
+
+        <div id="image-list" class="image-list">
+            <!-- As imagens serão carregadas aqui -->
+        </div>
+
+        <div id="progress-container" style="display: none;">
+            <h3>Progresso da Otimização:</h3>
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p id="progress-text">0%</p>
+        </div>
+
+        <div id="results" style="display: none;">
+            <h3>📊 Resultados:</h3>
+            <p id="size-before">Tamanho original: <span id="original-size">0 MB</span></p>
+            <p id="size-after">Tamanho otimizado: <span id="optimized-size">0 MB</span></p>
+            <p id="savings">Economia: <span id="savings-percent">0%</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Lista de imagens do projeto
+        const images = [
+            // Roma
+            'ROMA_Coliseu.jpg', 'ROMA_ForumRomano.jpg', 'ROMA_MontePalatino.jpg', 'ROMA_Panteão.jpg',
+            'ROMA_BasilicadeSaoPedro.png', 'ROMA_CastelSantAngelo.jpg', 'ROMA_catacumbas.png',
+            'ROMA_Circomaximo.png', 'ROMA_EscadariadaPraçadeEspanha.png', 'ROMA_FontanadiTrevi.png',
+            'ROMA_MuseusCapitolinos.jpg', 'ROMA_MuseusdoVaticano.jpg', 'ROMA_PalazzoBarberini.jpg',
+            'ROMA_PiazzaNavona.png', 'ROMA_TermasdeCaracalla.jpg', 'ROMA_ViaApia.png', 'ROMA.jpg',
+            
+            // Florença
+            'FLORENCA_Duomo.jpeg', 'FLORENCA_Galleria degli Uffizi.jpg', 'FLORENCA_Ponte.jpg',
+            'FLORENCA_BasilicaDeSanLorenzo.png', 'FLORENCA_BasilicaDeSantaCroce.png',
+            'FLORENCA_GalleriaDellAcademia.png', 'FLORENCA_PalazzoPitti.png', 'FLORENCA_PalazzoVecchio.png',
+            'FLORENCA_PiazzaleMichelangelo.png', 'FLORENCA_PiazzaSangiovanni.png', 'FLORENCA.jpg',
+            
+            // Milão
+            'MILAO_castelo.jpg', 'MILAO_duomo.jpg', 'MILAO_galeria.png', 'MILAO_teatro.png',
+            'MILAO_ultimaceia.png', 'MILAO.jpg',
+            
+            // Pisa
+            'PISA_batisterio.png', 'PISA_catedral.jpeg', 'PISA_torre.jpeg', 'PISA.jpg',
+            
+            // San Gimignano
+            'SANGEMINIANO_duomo.png', 'SANGEMINIANO_PalazzoComunale.png', 'SANGEMINIANO_piazza.png',
+            'SANGEMINIANO_torre.png', 'SANGEMINIANO.png',
+            
+            // Siena
+            'SIENA_catedral.jpg', 'SIENA_piazza.jpg', 'SIENA_torre.jpg', 'SIENA.jpeg',
+            
+            // Outros
+            'ITALIA.png', 'googlemaps.png'
+        ];
+
+        let totalOriginalSize = 0;
+        let totalOptimizedSize = 0;
+
+        function loadImages() {
+            const container = document.getElementById('image-list');
+            
+            images.forEach((imageName, index) => {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+                imageItem.innerHTML = `
+                    <img src="/Images/${imageName}" alt="${imageName}" onerror="this.style.display='none'">
+                    <div class="image-info">
+                        <strong>${imageName}</strong><br>
+                        <span id="size-${index}">Carregando...</span>
+                    </div>
+                `;
+                container.appendChild(imageItem);
+            });
+        }
+
+        function getImageSize(img) {
+            return new Promise((resolve) => {
+                if (img.complete) {
+                    resolve(img.naturalWidth * img.naturalHeight);
+                } else {
+                    img.onload = () => resolve(img.naturalWidth * img.naturalHeight);
+                    img.onerror = () => resolve(0);
+                }
+            });
+        }
+
+        function formatSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function estimateOptimizedSize(originalSize, format) {
+            // Estimativa de redução baseada no formato
+            const reductionFactors = {
+                'jpg': 0.3,  // 70% de redução
+                'jpeg': 0.3,
+                'png': 0.4,  // 60% de redução
+                'webp': 0.6  // 40% de redução (ainda melhor)
+            };
+            
+            const factor = reductionFactors[format] || 0.3;
+            return originalSize * (1 - factor);
+        }
+
+        async function analyzeImages() {
+            const images = document.querySelectorAll('#image-list img');
+            let processed = 0;
+            
+            document.getElementById('progress-container').style.display = 'block';
+            
+            for (let i = 0; i < images.length; i++) {
+                const img = images[i];
+                const sizeElement = document.getElementById(`size-${i}`);
+                
+                if (img.style.display !== 'none') {
+                    const size = await getImageSize(img);
+                    const format = img.src.split('.').pop().toLowerCase();
+                    const estimatedOptimized = estimateOptimizedSize(size, format);
+                    
+                    totalOriginalSize += size;
+                    totalOptimizedSize += estimatedOptimized;
+                    
+                    sizeElement.innerHTML = `
+                        ${img.naturalWidth}x${img.naturalHeight}px<br>
+                        Original: ~${formatSize(size)}<br>
+                        Otimizado: ~${formatSize(estimatedOptimized)}
+                    `;
+                } else {
+                    sizeElement.textContent = 'Arquivo não encontrado';
+                }
+                
+                processed++;
+                const progress = (processed / images.length) * 100;
+                document.getElementById('progress-bar').style.width = progress + '%';
+                document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+            }
+            
+            showResults();
+        }
+
+        function showResults() {
+            const savings = ((totalOriginalSize - totalOptimizedSize) / totalOriginalSize) * 100;
+            
+            document.getElementById('original-size').textContent = formatSize(totalOriginalSize);
+            document.getElementById('optimized-size').textContent = formatSize(totalOptimizedSize);
+            document.getElementById('savings-percent').textContent = Math.round(savings) + '%';
+            
+            document.getElementById('results').style.display = 'block';
+        }
+
+        // Carregar quando a página estiver pronta
+        window.onload = () => {
+            loadImages();
+            setTimeout(analyzeImages, 1000); // Aguardar imagens carregarem
+        };
+    </script>
+</body>
+</html>

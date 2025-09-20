@@ -1,0 +1,11 @@
+# Redirect all routes to index.html except static files
+/*    /index.html   200
+
+# Serve static files directly with proper headers
+/Audio/*    /Audio/:splat    200
+/Images/*   /Images/:splat   200
+
+# Ensure audio files are served with correct MIME type
+/Audio/*.mp3    /Audio/:splat    200
+/Audio/*.wav    /Audio/:splat    200
+/Audio/*.ogg    /Audio/:splat    200
