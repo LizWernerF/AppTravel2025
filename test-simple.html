@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Simples - AppTravel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Teste Simples - AppTravel</h1>
+    
+    <div class="test">
+        <h3>📁 Teste de Estrutura</h3>
+        <p>Verificando se os arquivos estão acessíveis...</p>
+        <div id="structure-test"></div>
+    </div>
+
+    <div class="test">
+        <h3>🎵 Teste de Áudio</h3>
+        <audio controls src="/public/Audio/ROMA_Coliseu.mp3">
+            Seu navegador não suporta áudio.
+        </audio>
+        <div id="audio-test"></div>
+    </div>
+
+    <div class="test">
+        <h3>🖼️ Teste de Imagem</h3>
+        <img src="/public/Images/ROMA_Coliseu.jpg" alt="Coliseu" style="max-width: 300px;">
+        <div id="image-test"></div>
+    </div>
+
+    <script>
+        // Teste de estrutura
+        async function testStructure() {
+            const tests = [
+                { name: 'index.html', url: '/index.html' },
+                { name: 'App.jsx', url: '/App.jsx' },
+                { name: 'Áudio Coliseu', url: '/public/Audio/ROMA_Coliseu.mp3' },
+                { name: 'Imagem Coliseu', url: '/public/Images/ROMA_Coliseu.jpg' }
+            ];
+            
+            let results = '';
+            
+            for (const test of tests) {
+                try {
+                    const response = await fetch(test.url, { method: 'HEAD' });
+                    const status = response.ok ? 'success' : 'error';
+                    const statusText = response.ok ? '✅ OK' : `❌ Erro ${response.status}`;
+                    
+                    results += `<div class="${status}"><strong>${test.name}:</strong> ${statusText}</div>`;
+                } catch (error) {
+                    results += `<div class="error"><strong>${test.name}:</strong> ❌ Erro: ${error.message}</div>`;
+                }
+            }
+            
+            document.getElementById('structure-test').innerHTML = results;
+        }
+
+        // Teste de áudio
+        function testAudio() {
+            const audio = document.querySelector('audio');
+            audio.addEventListener('canplay', () => {
+                document.getElementById('audio-test').innerHTML = '<div class="success">✅ Áudio carregado com sucesso!</div>';
+            });
+            audio.addEventListener('error', () => {
+                document.getElementById('audio-test').innerHTML = '<div class="error">❌ Erro ao carregar áudio</div>';
+            });
+        }
+
+        // Teste de imagem
+        function testImage() {
+            const img = document.querySelector('img');
+            img.addEventListener('load', () => {
+                document.getElementById('image-test').innerHTML = '<div class="success">✅ Imagem carregada com sucesso!</div>';
+            });
+            img.addEventListener('error', () => {
+                document.getElementById('image-test').innerHTML = '<div class="error">❌ Erro ao carregar imagem</div>';
+            });
+        }
+
+        // Executar testes
+        window.onload = () => {
+            testStructure();
+            testAudio();
+            testImage();
+        };
+    </script>
+</body>
+</html>

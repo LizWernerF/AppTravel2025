@@ -1,0 +1,20 @@
+# Arquivos de desenvolvimento que não devem ser enviados
+node_modules/
+.git/
+.gitignore
+*.log
+.DS_Store
+Thumbs.db
+
+# Arquivos de teste que não são necessários no deploy
+test-*.html
+optimize-*.html
+optimize-*.js
+todo.md
+
+# Arquivos de configuração local
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

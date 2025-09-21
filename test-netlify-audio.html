@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Áudio Netlify - AppTravel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .test-section h3 { margin-top: 0; color: #333; }
+        .status { padding: 5px 10px; border-radius: 4px; margin: 5px 0; font-size: 12px; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.loading { background: #d1ecf1; color: #0c5460; }
+        .test-button { background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        .test-button:hover { background: #0056b3; }
+        .audio-test { margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 4px; }
+        .url-test { font-family: monospace; font-size: 12px; color: #666; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Teste de Áudio Netlify - AppTravel</h1>
+        <p>Este script testa especificamente os problemas de áudio no Netlify.</p>
+        
+        <div class="test-section">
+            <h3>🔍 Informações do Ambiente</h3>
+            <div id="environment-info">
+                <p><strong>URL Atual:</strong> <span id="current-url"></span></p>
+                <p><strong>É Netlify:</strong> <span id="is-netlify"></span></p>
+                <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 Teste de URLs de Áudio</h3>
+            <button class="test-button" onclick="testAudioUrls()">Testar URLs de Áudio</button>
+            <div id="url-tests"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎧 Teste de Player de Áudio</h3>
+            <div class="audio-test">
+                <h4>ROMA_Coliseu.mp3</h4>
+                <div class="url-test">URL: /public/Audio/ROMA_Coliseu.mp3</div>
+                <audio controls preload="metadata" src="/public/Audio/ROMA_Coliseu.mp3" onerror="handleAudioError(this)" oncanplay="handleAudioSuccess(this)">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <div id="coliseu-status"></div>
+            </div>
+            
+            <div class="audio-test">
+                <h4>FLORENCA_Duomo.mp3</h4>
+                <div class="url-test">URL: /public/Audio/FLORENCA_Duomo.mp3</div>
+                <audio controls preload="metadata" src="/public/Audio/FLORENCA_Duomo.mp3" onerror="handleAudioError(this)" oncanplay="handleAudioSuccess(this)">
+                    Seu navegador não suporta o elemento de áudio.
+                </audio>
+                <div id="duomo-status"></div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 Teste de Headers HTTP</h3>
+            <button class="test-button" onclick="testHeaders()">Testar Headers</button>
+            <div id="headers-test"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 Resultados</h3>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <script>
+        // Detectar informações do ambiente
+        function detectEnvironment() {
+            const currentUrl = window.location.href;
+            const isNetlify = currentUrl.includes('netlify.app') || currentUrl.includes('netlify.com');
+            const userAgent = navigator.userAgent;
+            
+            document.getElementById('current-url').textContent = currentUrl;
+            document.getElementById('is-netlify').textContent = isNetlify ? 'Sim' : 'Não';
+            document.getElementById('user-agent').textContent = userAgent;
+        }
+
+        // Testar diferentes URLs de áudio
+        async function testAudioUrls() {
+        const urls = [
+            '/public/Audio/ROMA_Coliseu.mp3',
+            '/Audio/ROMA_Coliseu.mp3', // Fallback
+            './public/Audio/ROMA_Coliseu.mp3',
+            'public/Audio/ROMA_Coliseu.mp3',
+            window.location.origin + '/public/Audio/ROMA_Coliseu.mp3',
+            window.location.origin + '/Audio/ROMA_Coliseu.mp3' // Fallback
+        ];
+            
+            const resultsDiv = document.getElementById('url-tests');
+            resultsDiv.innerHTML = '<div class="status loading">Testando URLs...</div>';
+            
+            let results = '';
+            
+            for (const url of urls) {
+                try {
+                    const response = await fetch(url, { method: 'HEAD' });
+                    const status = response.ok ? 'success' : 'error';
+                    const statusText = response.ok ? '✅ OK' : `❌ Erro ${response.status}`;
+                    
+                    results += `
+                        <div class="status ${status}">
+                            <strong>${url}</strong><br>
+                            Status: ${statusText}<br>
+                            Content-Type: ${response.headers.get('content-type') || 'N/A'}<br>
+                            Content-Length: ${response.headers.get('content-length') || 'N/A'} bytes
+                        </div>
+                    `;
+                } catch (error) {
+                    results += `
+                        <div class="status error">
+                            <strong>${url}</strong><br>
+                            Erro: ${error.message}
+                        </div>
+                    `;
+                }
+            }
+            
+            resultsDiv.innerHTML = results;
+        }
+
+        // Testar headers HTTP
+        async function testHeaders() {
+            const headersDiv = document.getElementById('headers-test');
+            headersDiv.innerHTML = '<div class="status loading">Testando headers...</div>';
+            
+            try {
+                const response = await fetch('/public/Audio/ROMA_Coliseu.mp3', { method: 'HEAD' });
+                const headers = {};
+                
+                for (const [key, value] of response.entries()) {
+                    headers[key] = value;
+                }
+                
+                let headersHtml = '<h4>Headers da Resposta:</h4>';
+                for (const [key, value] of Object.entries(headers)) {
+                    headersHtml += `<div class="url-test"><strong>${key}:</strong> ${value}</div>`;
+                }
+                
+                headersDiv.innerHTML = headersHtml;
+            } catch (error) {
+                headersDiv.innerHTML = `<div class="status error">Erro ao testar headers: ${error.message}</div>`;
+            }
+        }
+
+        // Handlers para os players de áudio
+        function handleAudioError(audioElement) {
+            const fileName = audioElement.src.split('/').pop();
+            const statusDiv = document.getElementById(fileName.replace('.mp3', '-status'));
+            statusDiv.innerHTML = '<div class="status error">❌ Erro ao carregar áudio</div>';
+        }
+
+        function handleAudioSuccess(audioElement) {
+            const fileName = audioElement.src.split('/').pop();
+            const statusDiv = document.getElementById(fileName.replace('.mp3', '-status'));
+            statusDiv.innerHTML = '<div class="status success">✅ Áudio carregado com sucesso</div>';
+        }
+
+        // Inicializar quando a página carregar
+        window.onload = () => {
+            detectEnvironment();
+            testAudioUrls();
+            testHeaders();
+        };
+    </script>
+</body>
+</html>

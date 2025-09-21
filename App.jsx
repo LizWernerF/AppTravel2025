@@ -63,16 +63,25 @@ const OptimizedAudio = ({ src, className = '', ...props }) => {
       const fileName = originalSrc.split('/').pop()
       const baseName = fileName.replace(/\.[^/.]+$/, '')
       
-      // Try without encoding
-      fallbacks.push(`/Audio/${fileName}`)
+      // Try different path formats for Netlify with public folder
+      fallbacks.push(`./public/Audio/${fileName}`)
+      fallbacks.push(`public/Audio/${fileName}`)
+      fallbacks.push(`/public/Audio/${fileName}`)
+      fallbacks.push(`/Audio/${fileName}`) // Fallback for direct access
       
-      // Try different encodings
-      fallbacks.push(`/Audio/${encodeURIComponent(fileName)}`)
-      fallbacks.push(`/Audio/${encodeURI(fileName)}`)
+      // Try with different encodings
+      fallbacks.push(`/public/Audio/${encodeURIComponent(fileName)}`)
+      fallbacks.push(`/public/Audio/${encodeURI(fileName)}`)
+      
+      // Try with base URL (for Netlify)
+      const baseUrl = window.location.origin
+      fallbacks.push(`${baseUrl}/public/Audio/${fileName}`)
+      fallbacks.push(`${baseUrl}/Audio/${fileName}`) // Fallback
       
       // Try different formats (if not already MP3)
       if (!fileName.toLowerCase().endsWith('.mp3')) {
-        fallbacks.push(`/Audio/${baseName}.mp3`)
+        fallbacks.push(`/public/Audio/${baseName}.mp3`)
+        fallbacks.push(`${baseUrl}/public/Audio/${baseName}.mp3`)
       }
     }
     
@@ -555,7 +564,8 @@ function App() {
     const paths = []
     for (const v of variants) {
       for (const ext of exts) {
-        paths.push(`/Images/${encodeURIComponent(v)}.${ext}`)
+        paths.push(`/public/Images/${encodeURIComponent(v)}.${ext}`)
+        paths.push(`/Images/${encodeURIComponent(v)}.${ext}`) // Fallback
       }
     }
     return paths
@@ -626,16 +636,21 @@ function App() {
     for (const city of Array.from(new Set(cityVariants))) {
       for (const n of Array.from(new Set(names))) {
         const base = `${city}_${n}`
-        candidates.push(`/Audio/${encodeURIComponent(base)}.mp3`)
+        candidates.push(`/public/Audio/${encodeURIComponent(base)}.mp3`)
+        candidates.push(`/Audio/${encodeURIComponent(base)}.mp3`) // Fallback
       }
     }
     // Generic activity name (already supported below but keep ordering predictable)
-    candidates.push(`/Audio/${encodeURIComponent(actOriginal)}.mp3`)
-    candidates.push(`/Audio/${encodeURIComponent((actOriginal || '').toUpperCase())}.mp3`)
+    candidates.push(`/public/Audio/${encodeURIComponent(actOriginal)}.mp3`)
+    candidates.push(`/Audio/${encodeURIComponent(actOriginal)}.mp3`) // Fallback
+    candidates.push(`/public/Audio/${encodeURIComponent((actOriginal || '').toUpperCase())}.mp3`)
+    candidates.push(`/Audio/${encodeURIComponent((actOriginal || '').toUpperCase())}.mp3`) // Fallback
     // City-generic audio as last resort (e.g., Roma.mp3)
     if (cityName) {
-      candidates.push(`/Audio/${encodeURIComponent(cityName)}.mp3`)
-      candidates.push(`/Audio/${encodeURIComponent(cityUpper)}.mp3`)
+      candidates.push(`/public/Audio/${encodeURIComponent(cityName)}.mp3`)
+      candidates.push(`/Audio/${encodeURIComponent(cityName)}.mp3`) // Fallback
+      candidates.push(`/public/Audio/${encodeURIComponent(cityUpper)}.mp3`)
+      candidates.push(`/Audio/${encodeURIComponent(cityUpper)}.mp3`) // Fallback
     }
     return candidates
   }
@@ -661,7 +676,8 @@ function App() {
     const paths = []
     for (const v of Array.from(new Set(variants))) {
       for (const ext of exts) {
-        paths.push(`/Images/${encodeURIComponent(v)}.${ext}`)
+        paths.push(`/public/Images/${encodeURIComponent(v)}.${ext}`)
+        paths.push(`/Images/${encodeURIComponent(v)}.${ext}`) // Fallback
       }
     }
     return paths
@@ -790,7 +806,7 @@ function App() {
             >
               {removeDiacritics(country.name).toUpperCase() === 'ITALIA' && (
                 <img
-                  src="/Images/ITALIA.png"
+                  src="/public/Images/ITALIA.png"
                   alt="Mapa da Itália"
                   className="absolute top-2 right-2 w-16 h-16 object-contain opacity-80 pointer-events-none select-none"
                   onError={(e) => { e.target.style.display = 'none' }}
@@ -1311,7 +1327,7 @@ function App() {
                   className="w-full flex items-center justify-center gap-2"
                 >
                   <img
-                    src="/Images/googlemaps.png"
+                    src="/public/Images/googlemaps.png"
                     alt="Google Maps"
                     className="w-5 h-5 object-contain"
                     onError={(e) => { e.target.style.display = 'none' }}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppTravel - Teste Simples</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .test { 
+            margin: 20px 0; 
+            padding: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+        }
+        .success { 
+            background: #d4edda; 
+            color: #155724; 
+            padding: 10px; 
+            border-radius: 4px; 
+            margin: 10px 0; 
+        }
+        .error { 
+            background: #f8d7da; 
+            color: #721c24; 
+            padding: 10px; 
+            border-radius: 4px; 
+            margin: 10px 0; 
+        }
+        .loading { 
+            background: #d1ecf1; 
+            color: #0c5460; 
+            padding: 10px; 
+            border-radius: 4px; 
+            margin: 10px 0; 
+        }
+        audio, img { 
+            max-width: 100%; 
+            margin: 10px 0; 
+        }
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ AppTravel - Teste de Funcionamento</h1>
+        <p>Este é um teste simples para verificar se o projeto está funcionando no Netlify.</p>
+        
+        <div class="test">
+            <h3>🎵 Teste de Áudio</h3>
+            <p>Testando carregamento de áudio do Coliseu:</p>
+            <audio controls preload="metadata" id="audio-test">
+                Seu navegador não suporta áudio.
+            </audio>
+            <div id="audio-status" class="loading">Carregando áudio...</div>
+        </div>
+
+        <div class="test">
+            <h3>🖼️ Teste de Imagem</h3>
+            <p>Testando carregamento de imagem do Coliseu:</p>
+            <img id="image-test" alt="Coliseu" style="max-width: 300px;">
+            <div id="image-status" class="loading">Carregando imagem...</div>
+        </div>
+
+        <div class="test">
+            <h3>🔗 Teste de URLs</h3>
+            <p>Testando se os arquivos estão acessíveis:</p>
+            <button class="btn" onclick="testUrls()">Testar URLs</button>
+            <div id="url-results"></div>
+        </div>
+
+        <div class="test">
+            <h3>📱 Teste Mobile</h3>
+            <p>Informações do dispositivo:</p>
+            <div id="device-info"></div>
+        </div>
+    </div>
+
+    <script>
+        // Teste de áudio
+        const audio = document.getElementById('audio-test');
+        const audioStatus = document.getElementById('audio-status');
+        
+        // Tentar diferentes URLs de áudio
+        const audioUrls = [
+            '/public/Audio/ROMA_Coliseu.mp3',
+            '/Audio/ROMA_Coliseu.mp3',
+            './public/Audio/ROMA_Coliseu.mp3',
+            './Audio/ROMA_Coliseu.mp3'
+        ];
+        
+        let audioIndex = 0;
+        
+        function tryNextAudio() {
+            if (audioIndex < audioUrls.length) {
+                audio.src = audioUrls[audioIndex];
+                audioStatus.innerHTML = `Tentando: ${audioUrls[audioIndex]}`;
+                audioIndex++;
+            } else {
+                audioStatus.innerHTML = '<div class="error">❌ Nenhum áudio funcionou</div>';
+            }
+        }
+        
+        audio.addEventListener('canplay', () => {
+            audioStatus.innerHTML = '<div class="success">✅ Áudio carregado com sucesso!</div>';
+        });
+        
+        audio.addEventListener('error', () => {
+            tryNextAudio();
+        });
+        
+        // Teste de imagem
+        const img = document.getElementById('image-test');
+        const imgStatus = document.getElementById('image-status');
+        
+        const imageUrls = [
+            '/public/Images/ROMA_Coliseu.jpg',
+            '/Images/ROMA_Coliseu.jpg',
+            './public/Images/ROMA_Coliseu.jpg',
+            './Images/ROMA_Coliseu.jpg'
+        ];
+        
+        let imgIndex = 0;
+        
+        function tryNextImage() {
+            if (imgIndex < imageUrls.length) {
+                img.src = imageUrls[imgIndex];
+                imgStatus.innerHTML = `Tentando: ${imageUrls[imgIndex]}`;
+                imgIndex++;
+            } else {
+                imgStatus.innerHTML = '<div class="error">❌ Nenhuma imagem funcionou</div>';
+            }
+        }
+        
+        img.addEventListener('load', () => {
+            imgStatus.innerHTML = '<div class="success">✅ Imagem carregada com sucesso!</div>';
+        });
+        
+        img.addEventListener('error', () => {
+            tryNextImage();
+        });
+        
+        // Teste de URLs
+        async function testUrls() {
+            const resultsDiv = document.getElementById('url-results');
+            resultsDiv.innerHTML = '<div class="loading">Testando URLs...</div>';
+            
+            const tests = [
+                { name: 'index.html', url: '/index.html' },
+                { name: 'App.jsx', url: '/App.jsx' },
+                { name: 'Áudio Coliseu', url: '/public/Audio/ROMA_Coliseu.mp3' },
+                { name: 'Imagem Coliseu', url: '/public/Images/ROMA_Coliseu.jpg' }
+            ];
+            
+            let results = '';
+            
+            for (const test of tests) {
+                try {
+                    const response = await fetch(test.url, { method: 'HEAD' });
+                    const status = response.ok ? 'success' : 'error';
+                    const statusText = response.ok ? '✅ OK' : `❌ Erro ${response.status}`;
+                    
+                    results += `<div class="${status}"><strong>${test.name}:</strong> ${statusText}</div>`;
+                } catch (error) {
+                    results += `<div class="error"><strong>${test.name}:</strong> ❌ Erro: ${error.message}</div>`;
+                }
+            }
+            
+            resultsDiv.innerHTML = results;
+        }
+        
+        // Informações do dispositivo
+        function showDeviceInfo() {
+            const deviceDiv = document.getElementById('device-info');
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            deviceDiv.innerHTML = `
+                <div class="success">
+                    <strong>User Agent:</strong> ${navigator.userAgent}<br>
+                    <strong>É Mobile:</strong> ${isMobile ? 'Sim' : 'Não'}<br>
+                    <strong>URL Atual:</strong> ${window.location.href}
+                </div>
+            `;
+        }
+        
+        // Inicializar testes
+        window.onload = () => {
+            tryNextAudio();
+            tryNextImage();
+            showDeviceInfo();
+        };
+    </script>
+</body>
+</html>

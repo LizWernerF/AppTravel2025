@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppTravel - Teste Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-section h3 {
+            color: #34495e;
+            margin-top: 0;
+        }
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .loading {
+            color: #f39c12;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        audio {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .status.loading {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+        }
+        .status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏛️ AppTravel - Teste de Funcionamento</h1>
+        
+        <div class="test-section">
+            <h3>📁 Teste de Estrutura de Pastas</h3>
+            <div id="folder-test" class="status loading">Testando estrutura de pastas...</div>
+        </div>
+
+        <div class="test-section">
+            <h3>🖼️ Teste de Imagens</h3>
+            <div id="image-test" class="status loading">Testando carregamento de imagens...</div>
+            <img id="test-image" style="display: none;" alt="Imagem de teste">
+        </div>
+
+        <div class="test-section">
+            <h3>🎵 Teste de Áudio</h3>
+            <div id="audio-test" class="status loading">Testando carregamento de áudio...</div>
+            <audio id="test-audio" controls style="display: none;">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        </div>
+
+        <div class="test-section">
+            <h3>📱 Teste de Responsividade</h3>
+            <div id="responsive-test" class="status loading">Testando responsividade...</div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔗 Links de Teste Direto</h3>
+            <p><a href="/public/Images/ROMA_Coliseu.jpg" target="_blank">Imagem: Coliseu</a></p>
+            <p><a href="/public/Audio/ROMA_Coliseu.mp3" target="_blank">Áudio: Coliseu</a></p>
+            <p><a href="/index.html" target="_blank">Aplicação Principal</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Teste de estrutura de pastas
+        function testFolderStructure() {
+            const folderTest = document.getElementById('folder-test');
+            try {
+                // Verificar se conseguimos acessar arquivos
+                fetch('/public/Images/ROMA_Coliseu.jpg', { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            folderTest.innerHTML = '<span class="success">✅ Estrutura de pastas OK</span>';
+                            folderTest.className = 'status success';
+                        } else {
+                            folderTest.innerHTML = '<span class="error">❌ Erro ao acessar pastas</span>';
+                            folderTest.className = 'status error';
+                        }
+                    })
+                    .catch(error => {
+                        folderTest.innerHTML = '<span class="error">❌ Erro: ' + error.message + '</span>';
+                        folderTest.className = 'status error';
+                    });
+            } catch (error) {
+                folderTest.innerHTML = '<span class="error">❌ Erro: ' + error.message + '</span>';
+                folderTest.className = 'status error';
+            }
+        }
+
+        // Teste de imagens
+        function testImages() {
+            const imageTest = document.getElementById('image-test');
+            const testImage = document.getElementById('test-image');
+            
+            testImage.onload = function() {
+                imageTest.innerHTML = '<span class="success">✅ Imagens carregando corretamente</span>';
+                imageTest.className = 'status success';
+                testImage.style.display = 'block';
+            };
+            
+            testImage.onerror = function() {
+                imageTest.innerHTML = '<span class="error">❌ Erro ao carregar imagens</span>';
+                imageTest.className = 'status error';
+            };
+            
+            testImage.src = '/public/Images/ROMA_Coliseu.jpg';
+        }
+
+        // Teste de áudio
+        function testAudio() {
+            const audioTest = document.getElementById('audio-test');
+            const testAudio = document.getElementById('test-audio');
+            
+            testAudio.oncanplay = function() {
+                audioTest.innerHTML = '<span class="success">✅ Áudio carregando corretamente</span>';
+                audioTest.className = 'status success';
+                testAudio.style.display = 'block';
+            };
+            
+            testAudio.onerror = function() {
+                audioTest.innerHTML = '<span class="error">❌ Erro ao carregar áudio</span>';
+                audioTest.className = 'status error';
+            };
+            
+            testAudio.src = '/public/Audio/ROMA_Coliseu.mp3';
+        }
+
+        // Teste de responsividade
+        function testResponsiveness() {
+            const responsiveTest = document.getElementById('responsive-test');
+            const width = window.innerWidth;
+            
+            if (width < 768) {
+                responsiveTest.innerHTML = '<span class="success">✅ Modo Mobile detectado (' + width + 'px)</span>';
+            } else if (width < 1024) {
+                responsiveTest.innerHTML = '<span class="success">✅ Modo Tablet detectado (' + width + 'px)</span>';
+            } else {
+                responsiveTest.innerHTML = '<span class="success">✅ Modo Desktop detectado (' + width + 'px)</span>';
+            }
+            responsiveTest.className = 'status success';
+        }
+
+        // Executar todos os testes
+        window.onload = function() {
+            testFolderStructure();
+            testImages();
+            testAudio();
+            testResponsiveness();
+        };
+    </script>
+</body>
+</html>

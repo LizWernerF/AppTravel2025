@@ -1,0 +1,23 @@
+{
+  "name": "apptravel",
+  "version": "1.0.0",
+  "description": "Guia de Viagem de Bolso para Itália - Site Estático",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build required'",
+    "start": "echo 'Static site - no start command needed'",
+    "preview": "echo 'Static site - no preview command needed'"
+  },
+  "keywords": ["travel", "italy", "guide", "audio", "images", "static", "html"],
+  "author": "Liz Werner",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LizWernerF/AppTravel.git"
+  },
+  "homepage": "https://apptravel.netlify.app"
+}

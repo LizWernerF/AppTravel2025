@@ -1,37 +1,21 @@
 [build]
   publish = "."
-  command = "echo 'No build step needed'"
+  command = "bash build.sh"
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Otimização de imagens
-[[headers]]
-  for = "/Images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-    Content-Encoding = "gzip"
+# Configuração específica para site estático
+[build.processing]
+  skip_processing = false
 
-# Otimização de áudio
-[[headers]]
-  for = "/Audio/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-    Content-Type = "audio/mpeg"
-    Accept-Ranges = "bytes"
-    Content-Encoding = "gzip"
+[build.processing.css]
+  bundle = false
+  minify = false
 
-# Headers específicos para MP3
-[[headers]]
-  for = "/Audio/*.mp3"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-    Content-Type = "audio/mpeg"
-    Accept-Ranges = "bytes"
-    X-Content-Type-Options = "nosniff"
+[build.processing.js]
+  bundle = false
+  minify = false
 
-# Compressão geral
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Encoding = "gzip"
+[build.processing.html]
+  pretty_urls = true

@@ -67,7 +67,7 @@
             {
               "name": "Duomo de Florença",
               "image": "/home/ubuntu/upload/search_images/sb1l81nURtbm.jpg",
-              "narration_audio": "/Audio/FLORENCA_Duomo.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Duomo.mp3",
               "map_coordinates": {"latitude": "43.7731", "longitude": "11.2558"},
               "suggested_time": "2-3 horas",
               "description": "A Catedral de Santa Maria del Fiore, conhecida como Duomo de Florença, é um dos símbolos mais icônicos da cidade. Sua cúpula, projetada por Brunelleschi, é uma obra-prima da engenharia renascentista. O complexo inclui o Batistério e o Campanário de Giotto, oferecendo vistas panorâmicas da cidade.",
@@ -77,7 +77,7 @@
             {
               "name": "Galleria degli Uffizi",
               "image": "/home/ubuntu/upload/search_images/o5rmIcZBXXjO.jpg",
-              "narration_audio": "/Audio/FLORENCA_GaleriDegliUffizi.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_GaleriDegliUffizi.mp3",
               "map_coordinates": {"latitude": "43.7684", "longitude": "11.2558"},
               "suggested_time": "3-4 horas",
               "description": "A Galleria degli Uffizi é um dos museus de arte mais antigos e famosos do mundo, abrigando uma vasta coleção de obras-primas do Renascimento italiano, incluindo Botticelli, Leonardo da Vinci, Michelangelo e Rafael. É um destino imperdível para amantes da arte.",
@@ -87,7 +87,7 @@
             {
               "name": "Ponte Vecchio",
               "image": "/home/ubuntu/upload/search_images/qK7tn5jgCm2n.jpg",
-              "narration_audio": "/Audio/FLORENCA_Ponte%20Vecchio.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Ponte%20Vecchio.mp3",
               "map_coordinates": {"latitude": "43.7681", "longitude": "11.2531"},
               "suggested_time": "1 hora",
               "description": "A Ponte Vecchio é uma ponte medieval sobre o rio Arno, famosa por suas lojas construídas ao longo de suas laterais, que originalmente abrigavam açougues e, hoje, joalherias. É um dos cartões-postais de Florença e um local romântico para passear.",
@@ -98,7 +98,7 @@
             {
               "name": "Palazzo Pitti",
               "image": "",
-              "narration_audio": "/Audio/FLORENCA_Palazzo%20Pitti.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Palazzo%20Pitti.mp3",
               "map_coordinates": {"latitude": "43.7659", "longitude": "11.2507"},
               "suggested_time": "1-2 horas",
               "description": "Palácio renascentista com museus e os Jardins de Boboli, antiga residência dos Medici.",
@@ -108,7 +108,7 @@
             {
               "name": "Galleria dell’Accademia",
               "image": "",
-              "narration_audio": "/Audio/FLORENCA_GalleriaDellAcademia.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_GalleriaDellAcademia.mp3",
               "map_coordinates": {"latitude": "43.7769", "longitude": "11.2586"},
               "suggested_time": "1-2 horas",
               "description": "Museu que abriga o Davi de Michelangelo e outras obras-primas do Renascimento.",
@@ -118,7 +118,7 @@
             {
               "name": "Piazza San Giovanni",
               "image": "",
-              "narration_audio": "/Audio/FLORENCA_Piazza%20San%20Giovanni.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Piazza%20San%20Giovanni.mp3",
               "map_coordinates": {"latitude": "43.7734", "longitude": "11.2556"},
               "suggested_time": "30-60 min",
               "description": "Praça do Batistério de São João, em frente ao Duomo, coração religioso da cidade.",
@@ -128,7 +128,7 @@
             {
               "name": "Palazzo Vecchio",
               "image": "",
-              "narration_audio": "/Audio/FLORENCA_Palazzo%20Vecchio.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Palazzo%20Vecchio.mp3",
               "map_coordinates": {"latitude": "43.7696", "longitude": "11.2558"},
               "suggested_time": "1-2 horas",
               "description": "Sede histórica do poder civil de Florença, com museu e a icônica torre Arnolfo.",
@@ -138,7 +138,7 @@
             {
               "name": "Basílica de San Lorenzo",
               "image": "",
-              "narration_audio": "/Audio/FLORENCA_Bas%C3%ADlica%20de%20San%20Lorenzo.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Bas%C3%ADlica%20de%20San%20Lorenzo.mp3",
               "map_coordinates": {"latitude": "43.7741", "longitude": "11.2530"},
               "suggested_time": "1 hora",
               "description": "Uma das igrejas mais antigas de Florença, ligada à família Medici e a Brunelleschi.",
@@ -147,8 +147,8 @@
             },
             {
               "name": "Basílica di Santa Croce",
-              "image": "/Images/FLORENCA_BasilicaDeSantaCroce.png",
-              "narration_audio": "/Audio/FLORENCA_BasilicaDeSantaCroce.mp3",
+              "image": "/public/Images/FLORENCA_BasilicaDeSantaCroce.png",
+              "narration_audio": "/public/Audio/FLORENCA_BasilicaDeSantaCroce.mp3",
               "map_coordinates": {"latitude": "43.7687", "longitude": "11.2626"},
               "suggested_time": "1-2 horas",
               "description": "Basílica franciscana famosa por túmulos de figuras como Michelangelo, Galileo e Machiavelli.",
@@ -158,7 +158,7 @@
             {
               "name": "Piazzale Michelangelo",
               "image": "",
-              "narration_audio": "/Audio/FLORENCA_Piazzale%20Michelangelo.mp3",
+              "narration_audio": "/public/Audio/FLORENCA_Piazzale%20Michelangelo.mp3",
               "map_coordinates": {"latitude": "43.7629", "longitude": "11.2658"},
               "suggested_time": "30-60 min",
               "description": "Mirante com a vista panorâmica mais clássica de Florença e do rio Arno.",
@@ -173,7 +173,7 @@
             {
               "name": "Duomo de Milão (Catedral de Milão)",
               "image": "/home/ubuntu/upload/search_images/ZBFMkeEFmxQY.jpg",
-              "narration_audio": "/Audio/MILAO_Duomo.mp3",
+              "narration_audio": "/public/Audio/MILAO_Duomo.mp3",
               "map_coordinates": {"latitude": "45.4642", "longitude": "9.1916"},
               "suggested_time": "2-3 horas",
               "description": "A Catedral de Milão, ou Duomo di Milano, é uma das maiores e mais impressionantes catedrais góticas do mundo. Sua arquitetura detalhada, vitrais coloridos e o terraço com vistas panorâmicas da cidade a tornam um marco imperdível em Milão.",
@@ -183,7 +183,7 @@
             {
               "name": "Galleria Vittorio Emanuele II",
               "image": "/home/ubuntu/upload/search_images/MVVmBMFoCUO8.jpg",
-              "narration_audio": "/Audio/MILAO_GalleriaVittorioEmanueleII.mp3",
+              "narration_audio": "/public/Audio/MILAO_GalleriaVittorioEmanueleII.mp3",
               "map_coordinates": {"latitude": "45.4654", "longitude": "9.1918"},
               "suggested_time": "1-2 horas",
               "description": "A Galleria Vittorio Emanuele II é uma das galerias comerciais mais antigas e luxuosas do mundo, abrigando lojas de grife, restaurantes e cafés. Com sua arquitetura deslumbrante e teto de vidro, é um ponto de encontro elegante e um ícone da moda milanesa.",
@@ -193,7 +193,7 @@
             {
               "name": "Teatro alla Scala",
               "image": "/home/ubuntu/upload/search_images/tBp44ntrqW3J.jpg",
-              "narration_audio": "/Audio/MILAO_TeatroAllaScala.mp3",
+              "narration_audio": "/public/Audio/MILAO_TeatroAllaScala.mp3",
               "map_coordinates": {"latitude": "45.4682", "longitude": "9.1894"},
               "suggested_time": "1-2 horas",
               "description": "O Teatro alla Scala é uma das casas de ópera mais prestigiadas do mundo, com uma rica história e palco para muitas estreias famosas. Mesmo sem assistir a uma apresentação, é possível visitar o museu do teatro para aprender sobre sua história e ver figurinos e instrumentos.",
@@ -202,8 +202,8 @@
             },
             {
               "name": "A Última Ceia",
-              "image": "/Images/MILAO_ultimaceia.png",
-              "narration_audio": "/Audio/MILAO_UltimaCeia.mp3",
+              "image": "/public/Images/MILAO_ultimaceia.png",
+              "narration_audio": "/public/Audio/MILAO_UltimaCeia.mp3",
               "map_coordinates": {"latitude": "45.4636", "longitude": "9.1677"},
               "suggested_time": "1 hora",
               "description": "A Última Ceia de Leonardo da Vinci é uma das obras de arte mais famosas do mundo, localizada no refeitório do Convento de Santa Maria delle Grazie. A visita requer reserva antecipada devido à sua fragilidade e grande demanda.",
@@ -213,7 +213,7 @@
             {
               "name": "Castelo Sforzesco",
               "image": "/home/ubuntu/upload/search_images/eN55C4aFjcqW.jpg",
-              "narration_audio": "/Audio/MILAO_CastelloSforzesco.mp3",
+              "narration_audio": "/public/Audio/MILAO_CastelloSforzesco.mp3",
               "map_coordinates": {"latitude": "45.4705", "longitude": "9.1799"},
               "suggested_time": "2-3 horas",
               "description": "O Castelo Sforzesco é uma fortaleza histórica que abriga vários museus e coleções de arte, incluindo a Pietà Rondanini de Michelangelo. Seus pátios e jardins são ideais para um passeio relaxante, e o castelo é um símbolo da rica história de Milão.",
@@ -228,7 +228,7 @@
             {
               "name": "Torre de Pisa",
               "image": "/home/ubuntu/upload/search_images/GSzOFYZNUV9N.jpg",
-              "narration_audio": "/Audio/PISA_TorreDePisa.mp3",
+              "narration_audio": "/public/Audio/PISA_TorreDePisa.mp3",
               "map_coordinates": {"latitude": "43.72295", "longitude": "10.39659"},
               "suggested_time": "1-2 horas",
               "description": "A Torre de Pisa é o campanário inclinado da Catedral de Pisa, famosa por sua inclinação acidental. É um dos marcos mais reconhecíveis da Itália e um Patrimônio Mundial da UNESCO. Os visitantes podem subir ao topo para vistas panorâmicas.",
@@ -238,7 +238,7 @@
             {
               "name": "Catedral de Pisa (Duomo di Santa Maria Assunta)",
               "image": "/home/ubuntu/upload/search_images/7ki0suCaMouD.jpg",
-              "narration_audio": "/Audio/PISA_CatedralDePisa.mp3",
+              "narration_audio": "/public/Audio/PISA_CatedralDePisa.mp3",
               "map_coordinates": {"latitude": "43.7231", "longitude": "10.3966"},
               "suggested_time": "1-2 horas",
               "description": "A Catedral de Pisa é uma obra-prima da arquitetura românica pisana, com sua fachada impressionante e interior ricamente decorado. Faz parte do complexo da Piazza dei Miracoli, juntamente com a Torre Inclinada e o Batistério.",
@@ -248,7 +248,7 @@
             {
               "name": "Batistério de Pisa",
               "image": "/home/ubuntu/upload/search_images/OFnBhuF9bA5f.jpg",
-              "narration_audio": "/Audio/PISA_BatisterioDePisa.mp3",
+              "narration_audio": "/public/Audio/PISA_BatisterioDePisa.mp3",
               "map_coordinates": {"latitude": "43.7233", "longitude": "10.3964"},
               "suggested_time": "30 minutos - 1 hora",
               "description": "O Batistério de Pisa é o maior batistério da Itália, conhecido por sua acústica notável e sua arquitetura gótica e românica. Localizado na Piazza dei Miracoli, complementa a beleza da Catedral e da Torre.",
@@ -263,7 +263,7 @@
             {
               "name": "Torre Grossa",
               "image": "/home/ubuntu/upload/search_images/ldntSbbF6P8y.jpg",
-              "narration_audio": "/Audio/SANGIMIGNANO_TorreGrossa.mp3",
+              "narration_audio": "/public/Audio/SANGIMIGNANO_TorreGrossa.mp3",
               "map_coordinates": {"latitude": "43.4682", "longitude": "11.0428"},
               "suggested_time": "1 hora",
               "description": "A Torre Grossa é a torre mais alta de San Gimignano, oferecendo vistas panorâmicas espetaculares da cidade e da paisagem toscana circundante. É um dos símbolos da cidade medieval e um Patrimônio Mundial da UNESCO.",
@@ -273,7 +273,7 @@
             {
               "name": "Duomo di San Gimignano (Colegiada de Santa Maria Assunta)",
               "image": "/home/ubuntu/upload/search_images/ipJXVQSFCOqa.jpg",
-              "narration_audio": "/Audio/SANGIMIGNANO_DuomodeSanGimignano.mp3",
+              "narration_audio": "/public/Audio/SANGIMIGNANO_DuomodeSanGimignano.mp3",
               "map_coordinates": {"latitude": "43.4683", "longitude": "11.0426"},
               "suggested_time": "1-2 horas",
               "description": "O Duomo de San Gimignano, ou Colegiada de Santa Maria Assunta, é uma igreja românica com afrescos impressionantes de artistas como Ghirlandaio. É um tesouro de arte medieval e um local de grande importância religiosa e cultural.",
@@ -283,7 +283,7 @@
             {
               "name": "Piazza della Cisterna",
               "image": "",
-              "narration_audio": "/Audio/SANGIMIGNANO_PiazzadellaCisterna.mp3",
+              "narration_audio": "/public/Audio/SANGIMIGNANO_PiazzadellaCisterna.mp3",
               "map_coordinates": {"latitude": "43.4679", "longitude": "11.0426"},
               "suggested_time": "30 minutos - 1 hora",
               "description": "A Piazza della Cisterna é uma praça triangular pitoresca no coração de San Gimignano, famosa por seu poço medieval e edifícios históricos. É um local vibrante para passear, desfrutar de um gelato e absorver a atmosfera medieval da cidade.",
@@ -292,8 +292,8 @@
             },
             {
               "name": "Palazzo Comunale",
-              "image": "/Images/SANGEMINIANO_PalazzoComunale.png",
-              "narration_audio": "/Audio/SANGIMIGNANO_PalazzoComunale.mp3",
+              "image": "/public/Images/SANGEMINIANO_PalazzoComunale.png",
+              "narration_audio": "/public/Audio/SANGIMIGNANO_PalazzoComunale.mp3",
               "map_coordinates": {"latitude": "43.4681", "longitude": "11.0425"},
               "suggested_time": "1 hora",
               "description": "O Palazzo Comunale é a sede histórica do governo municipal de San Gimignano, abrigando o Museu Cívico com obras de arte medievais e renascentistas, incluindo afrescos de artistas como Memmo di Filippuccio.",
@@ -308,7 +308,7 @@
             {
               "name": "Piazza del Campo",
               "image": "/home/ubuntu/upload/search_images/iWPTOfusQCc8.jpg",
-              "narration_audio": "/Audio/SIENA_PiazzadelCampo.mp3",
+              "narration_audio": "/public/Audio/SIENA_PiazzadelCampo.mp3",
               "map_coordinates": {"latitude": "43.3201", "longitude": "11.3315"},
               "suggested_time": "1-2 horas",
               "description": "A Piazza del Campo é a principal praça pública do centro histórico de Siena, famosa por sua forma de concha e por ser o local da corrida de cavalos Palio. É um Patrimônio Mundial da UNESCO e um dos espaços medievais mais bonitos da Europa.",
@@ -318,7 +318,7 @@
             {
               "name": "Duomo de Siena (Catedral de Siena)",
               "image": "/home/ubuntu/upload/search_images/CrsxrAJ9iPlu.jpg",
-              "narration_audio": "/Audio/SIENA_DuomodeSiena.mp3",
+              "narration_audio": "/public/Audio/SIENA_DuomodeSiena.mp3",
               "map_coordinates": {"latitude": "43.3185", "longitude": "11.3299"},
               "suggested_time": "1-2 horas",
               "description": "O Duomo de Siena é uma magnífica catedral gótica, conhecida por sua fachada ornamentada, pisos de mármore intrincados, e obras de arte de artistas como Donatello e Michelangelo. É um dos exemplos mais impressionantes da arquitetura gótica italiana.",
@@ -328,7 +328,7 @@
             {
               "name": "Torre del Mangia",
               "image": "",
-              "narration_audio": "/Audio/SIENA_TorreDelMangia.mp3",
+              "narration_audio": "/public/Audio/SIENA_TorreDelMangia.mp3",
               "map_coordinates": {"latitude": "43.3187", "longitude": "11.3316"},
               "suggested_time": "1 hora",
               "description": "A Torre del Mangia é a segunda torre medieval mais alta da Itália, oferecendo vistas panorâmicas espetaculares da Piazza del Campo e da cidade de Siena. Subir seus degraus é uma experiência gratificante para apreciar a beleza da Toscana.",
