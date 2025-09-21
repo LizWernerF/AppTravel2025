@@ -1,20 +1,10 @@
 {
   "version": 2,
   "name": "apptravel",
-  "builds": [
+  "rewrites": [
     {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/public/(.*)",
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/((?!public/).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
